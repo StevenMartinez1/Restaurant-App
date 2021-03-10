@@ -1,0 +1,16 @@
+{
+  "name": "restaurant_tinder",
+  "version": "1.0.0",
+  "description": "An app that simplifies choosing a restaurant for groups. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm nodemon app.js"
+  },
+  "author": "Steven Martinez",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "yelp-fusion": "^3.0.0"
+  }
+}
