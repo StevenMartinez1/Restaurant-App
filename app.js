@@ -26,6 +26,7 @@ client.search(search_request)
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/static", express.static('./static/'));
 
 app.get('/', function(req,res){
   res.sendFile(__dirname, + '/public/index.html');
