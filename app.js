@@ -6,18 +6,22 @@ app.use(express.json());
 const path = require('path');
 const yelp = require('yelp-fusion');
 
+const https = require('https');
+
 const api_key = process.env.YELP_API_KEY;
 
 const client = yelp.client(api_key);
 
-function get_yelp_request(search_request){
-  return client.search(search_request)
-   .then(function(response){
-       return response.jsonBody;
-     })
-     .catch((error) => {
-       console.log(error);
-   });
+async function get_yelp_request(search_request){
+  var x = await client.search(search_request)
+  .then(function(response){
+    //console.log(response.jsonBody);
+    return response.jsonBody;
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+  return x;
 }
 
 
@@ -36,15 +40,11 @@ app.post('/submit', function(req,res){
     limit: 1
   };
 
-  restaurants = get_yelp_request(search_request).then(function(res){
-    //console.log(res.businesses);
-    return res.businesses;
-  });
+  restaurants = get_yelp_request(search_request);
 
-  console.log(restaurants);
-
-
-  res.send(restaurants);
+  restaurants.then(function(result){
+    res.send(result)
+  })
 });
 
 app.listen(3000);
