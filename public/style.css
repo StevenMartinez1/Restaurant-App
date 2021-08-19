@@ -29,3 +29,13 @@
 #filter_label{
 
 }
+
+#restaurant_information{
+  display: flex;
+  height: 300px;
+  width:600px;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  display: None;
+}

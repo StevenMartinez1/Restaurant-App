@@ -15,7 +15,7 @@ const client = yelp.client(api_key);
 async function get_yelp_request(search_request){
   var x = await client.search(search_request)
   .then(function(response){
-    //console.log(response.jsonBody);
+    console.log(response.jsonBody);
     return response.jsonBody;
   })
   .catch((error) => {
@@ -43,7 +43,9 @@ app.post('/submit', function(req,res){
   restaurants = get_yelp_request(search_request);
 
   restaurants.then(function(result){
-    res.send(result)
+    //console.log(result)
+    //console.log(result["businesses"][0]["image_url"]);
+    res.send(result["businesses"])
   })
 });
 

@@ -14,12 +14,22 @@ function send_filters(location, food_category){
   var theUrl = "/submit";
   xhr.open("POST",theUrl);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  console.log("2")
   xhr.send(JSON.stringify({location: location, food_category: food_category}));
 
   xhr.onloadend = function(e){
     let r = xhr.responseText.toString();
-    console.log(r);
+    restaurant_json = JSON.parse(r)
+    //console.log(restaurant_json[0]["image_url"]);
     console.log("Response Recieved");
+    document.getElementById("restaurant_filters_box").style.display = "none";
+    document.getElementById("restaurant_information").style.display = "inline";
+    document.getElementById("restaurant_image").src=restaurant_json[0]["image_url"];
+    //load_restaurant_details(restaurant_json);
   }
 }
+
+/*function load_restaurant_details(restaurant_json){
+
+
+
+}*/
