@@ -22,7 +22,7 @@ function send_filters(location, food_category){
     //console.log(restaurant_json[0]["image_url"]);
     console.log("Response Recieved");
     document.getElementById("restaurant_filters_box").style.display = "none";
-    document.getElementById("restaurant_information").style.display = "inline";
+    document.getElementById("restaurant_information").style.display = "flex";
     document.getElementById("restaurant_image").src=restaurant_json[0]["image_url"];
     //load_restaurant_details(restaurant_json);
   }

@@ -32,10 +32,21 @@
 
 #restaurant_information{
   display: flex;
-  height: 300px;
-  width:600px;
+  height: 90%;
+  width:80%;
   border-radius: 25px;
   justify-content: center;
   align-items: center;
   display: None;
+  background-color: #B0A0A0;
+}
+
+
+#restaurant_image{
+  display: flex;
+  height: 80%;
+  width:90%;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
 }
