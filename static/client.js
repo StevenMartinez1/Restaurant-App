@@ -2,6 +2,10 @@
 
 document.getElementById('sub').addEventListener("click", function(event) {
   event.preventDefault();
+  if(document.getElementById('location').value === "" ||  document.getElementById('location').value == null){
+    document.getElementById('location').style.backgroundColor = "red";
+    return;
+  }
   console.log("Sending Filters to server.");
   var location = document.getElementById('location').value;
   var food_category = document.getElementById('food_category').value;
