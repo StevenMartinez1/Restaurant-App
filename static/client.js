@@ -1,3 +1,5 @@
+var slideIndex = 1;
+
 
 
 document.getElementById('sub').addEventListener("click", function(event) {
@@ -14,7 +16,7 @@ document.getElementById('sub').addEventListener("click", function(event) {
 });
 
 function send_filters(location, food_category){
-  var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest(); 
   var theUrl = "/submit";
   xhr.open("POST",theUrl);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -26,14 +28,35 @@ function send_filters(location, food_category){
     //console.log(restaurant_json[0]["image_url"]);
     console.log("Response Recieved");
     document.getElementById("restaurant_filters_box").style.display = "none";
-    document.getElementById("restaurant_information").style.display = "flex";
-    document.getElementById("restaurant_image").src=restaurant_json[0]["image_url"];
-    //load_restaurant_details(restaurant_json);
+    load_restaurant_details(restaurant_json);
   }
 }
 
-/*function load_restaurant_details(restaurant_json){
+function load_restaurant_details(restaurant_json){
+  document.getElementById("restaurant_information").style.display = "flex";
+  var info = document.getElementById("restaurant_information")
 
+  for(var i = 0; i < 10; i++){
+    var img_src = restaurant_json[i]["image_url"];
+    info.innerHTML += '<img class="restaurant_image" src="' + img_src + '">';
+    //document.getElementById("restaurant_image").src=restaurant_json[0]["image_url"];
+  }
 
+  showDivs(slideIndex);
 
-}*/
+}
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("restaurant_image");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "flex";
+}

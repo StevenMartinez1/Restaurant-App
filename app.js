@@ -37,7 +37,7 @@ app.post('/submit', function(req,res){
   const search_request = {
     term: req.body.food_category,
     location: req.body.location,
-    limit: 1
+    limit: 10
   };
 
   restaurants = get_yelp_request(search_request);
